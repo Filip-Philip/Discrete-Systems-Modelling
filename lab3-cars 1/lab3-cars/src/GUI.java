@@ -27,7 +27,7 @@ public class GUI extends JPanel implements ActionListener, ChangeListener {
 
     public void initialize(Container container) {
         container.setLayout(new BorderLayout());
-        container.setSize(new Dimension(1024, 768));
+        container.setSize(new Dimension(1800, 220));
 
         JPanel buttonPanel = new JPanel();
 
@@ -45,11 +45,16 @@ public class GUI extends JPanel implements ActionListener, ChangeListener {
         pred.addChangeListener(this);
         pred.setValue(maxDelay - timer.getDelay());
 
+        drawType = new JComboBox<Integer>(Point.types);
+        drawType.addActionListener(this);
+        drawType.setActionCommand("drawType");
+
         buttonPanel.add(start);
         buttonPanel.add(clear);
+        buttonPanel.add(drawType);
         buttonPanel.add(pred);
 
-        board = new Board(1024, 768 - buttonPanel.getHeight());
+        board = new Board(1800, 220 - buttonPanel.getHeight());
         container.add(board, BorderLayout.CENTER);
         container.add(buttonPanel, BorderLayout.SOUTH);
     }
